@@ -9,13 +9,11 @@ class TransactionDetail extends Model
 {
     use SoftDeletes;
 
-    protected $fillable =[
-        'transactions_id','products_id'
+    protected $fillable = [
+        'transactions_id', 'products_id'
     ];
 
-    protected $hidden = [
-
-    ];
+    protected $hidden = [];
 
     public function transaction()
     {
@@ -24,6 +22,6 @@ class TransactionDetail extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class,'products_id','id');
+        return $this->belongsTo(Product::class, 'products_id', 'id');
     }
 }

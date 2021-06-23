@@ -18,45 +18,46 @@ class ProductController extends Controller
         $price_from = $request->input('price_from');
         $price_to = $request->input('price_to');
 
-        if($id)
-        {
+        if ($id) {
             $product = Product::with('galleries')->find($id);
 
-            if($product)
+            if ($product)
                 return ResponseFormatter::success($product, 'Data product berhasil diambil');
             else
                 return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
         }
 
-        if($slug)
-        {
+        if ($slug) {
             $product = Product::with('galleries')
                 ->where('slug', $slug)
                 ->first();
 
-            if($product)
+            if ($product)
                 return ResponseFormatter::success($product, 'Data product berhasil diambil');
             else
                 return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
+            // return $this->errorResponse(null, 'Data produk tidak ada');
         }
 
         $product = Product::with('galleries');
 
-        if($name)
-            $product->where('name','like','%'. $name .'%');
+        if ($name)
+            $product->where('name', 'like', '%' . $name . '%');
 
-        if($type)
-           $product->where('type','like','%'. $name .'%');
+        if ($type)
+            $product->where('type', 'like', '%' . $name . '%');
 
-        if($price_from)
+        if ($price_from)
             $product->where('price', '>=', $price_from);
 
-        if($price_to)
+        if ($price_to)
             $product->where('price', '<=', $price_to);
 
         return ResponseFormatter::success(
             $product->paginate($limit),
             'Data list product berhasil diambil'
         );
+        // $productAll = Product::all();
+        // return $this->successResponse($productAll, 'Data list product berhasil diambil');
     }
 }

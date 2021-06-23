@@ -33,11 +33,11 @@
                     <th>Harga</th>
                 </tr>
                 @foreach ($item->details as $detail)
-                    <tr>
-                        <td>{{ $detail->product->name }}</td>
-                        <td>{{ $detail->product->type }}</td>
-                        <td>${{ $detail->product->price }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ $detail->product->name }}</td>
+                    <td>{{ $detail->product->type }}</td>
+                    <td>${{ $detail->product->price }}</td>
+                </tr>
                 @endforeach
             </table>
         </td>
@@ -45,18 +45,18 @@
 </table>
 <div class="row">
     <div class="col-4">
-      <a href="{{ route('transactions.status', $item->id) }}?status=SUCCESS" class="btn btn-success btn-block">
-        <i class="fa fa-check"></i> Set Sukses
-      </a>
+        <a href="{{ route('transactions.status', $item->id) }}?status=SUCCESS" class="btn btn-success btn-block">
+            <i class="fa fa-check"></i> Set Sukses
+        </a>
     </div>
     <div class="col-4">
-      <a href="{{ route('transactions.status', $item->id) }}?status=FAILED" class="btn btn-danger btn-block">
-        <i class="fa fa-times"></i> Set Gagal
-      </a>
+        <a href="{{ route('transactions.status', $item->id) }}?status=FAILED" class="btn btn-danger btn-block">
+            <i class="fa fa-times"></i> Set Gagal
+        </a>
     </div>
     <div class="col-4">
-      <a href="{{ route('transactions.status', $item->id) }}?status=PENDING" class="btn btn-info btn-block">
-        <i class="fa fa-spinner"></i> Set Pending
-      </a>
+        <a href="{{ route('transactions.status', $item->id) }}?status=PENDING" class="btn btn-info btn-block">
+            <i class="fa fa-spinner"></i> Set Pending
+        </a>
     </div>
-  </div>
+</div>
